@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * @author Vikrant_Gopewar on 30-07-2023
@@ -25,8 +24,8 @@ public class StudentService {
         return studentRepository.findAll();
     }
 
-    public Optional<Student> getStudentById(Byte id) {
-        return studentRepository.findById(id);
+    public Student getStudentById(Long id) {
+        return studentRepository.findById(id).orElseThrow(() -> new IllegalArgumentException(" id not found "));
     }
 
     public Student createStudent(Student student) {
@@ -37,7 +36,8 @@ public class StudentService {
         return studentRepository.save(student);
     }
 
-    public void deleteStudent(Byte id) {
+    public void deleteStudent(Long id) {
+        studentRepository.findById(id).orElseThrow(() -> new IllegalArgumentException(" id not found "));
         studentRepository.deleteById(id);
     }
 }

@@ -1,11 +1,10 @@
 package com.elk.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
@@ -16,16 +15,22 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 public class Student {
 
     @Id
-    private Byte id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    //@Pattern(regexp = "^[A-Za-z]", message="Invalid firstName")
     private String firstName;
+
+    //@Pattern(regexp = "^[A-Za-z]", message="Invalid lastName")
     private String lastName;
 
     @ManyToOne
-    @JsonBackReference
     @JoinColumn(name = "school_id")
+    @JsonBackReference
     private School school;
 
 }

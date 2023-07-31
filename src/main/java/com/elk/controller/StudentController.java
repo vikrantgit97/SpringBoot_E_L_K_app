@@ -11,7 +11,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/students")
@@ -26,7 +25,7 @@ public class StudentController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Student> getStudentById(@PathVariable Byte id) {
+    public Student getStudentById(@PathVariable Long id) {
         return studentService.getStudentById(id);
     }
 
@@ -36,14 +35,14 @@ public class StudentController {
     }
 
     @PutMapping("/{id}")
-    public Student updateStudent(@PathVariable Byte id, @RequestBody Student student) {
+    public Student updateStudent(@PathVariable Long id, @RequestBody Student student) {
         // Make sure the ID in the request body matches the ID in the URL path
         //student.setId(id);
         return studentService.updateStudent(student);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteStudent(@PathVariable Byte id) {
+    public void deleteStudent(@PathVariable Long id) {
         studentService.deleteStudent(id);
     }
 }

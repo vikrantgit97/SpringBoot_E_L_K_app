@@ -25,7 +25,7 @@ public class SchoolController {
     }
 
     @GetMapping("/{id}")
-    public School getSchoolById(@PathVariable Byte id) {
+    public School getSchoolById(@PathVariable Long id) {
         return schoolService.getSchoolById(id);
     }
 
@@ -35,12 +35,12 @@ public class SchoolController {
     }
 
     @PutMapping("/{id}")
-    public School updateSchool(@PathVariable Byte id, @RequestBody School school) {
+    public School updateSchool(@PathVariable Long id, @RequestBody School school) {
         return schoolService.updateSchool(id, school);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteSchool(@PathVariable Byte id) {
+    public void deleteSchool(@PathVariable Long id) {
         schoolService.deleteSchool(id);
     }
 }
