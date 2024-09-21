@@ -16,7 +16,6 @@ SpringBoot_E_L_K
 ├── mvnw
 ├── mvnw.cmd
 ├── pom.xml
-├── request.http
 └── src
     ├── main
     │ ├── java
